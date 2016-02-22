@@ -75,6 +75,8 @@ case $1 in
         start_servers;;
     stop)
         stop_servers;;
+    input)
+        input_servers;;
     *)
         echo -e "Usage: $0 {start|stop|input}"
         exit 1;;
