@@ -48,6 +48,28 @@ function stop_servers(){
     done
 }
 
+function input_servers(){
+    for ((r=1 ; r<2 ; r++))
+    do
+        if ps ax | grep -v grep | grep -i SCREEN | grep $gmodphScreen$r > /dev/null
+        then
+            i=0
+            for param in "$@"
+            do
+                if [ $i -eq 0 ] ; then
+                    ((i=$i+1))
+                else
+                    commande="$commande$param"
+                    commande="$commande "
+                fi
+            done
+            bash -c "screen -p 0 -S $gmodphScreen$r -X eval 'stuff \"$commande\"\015'"
+        else
+            echo -e "$fail Server $r is not runing !"
+        fi
+    done
+}
+
 case $1 in
     start)
         start_servers;;
