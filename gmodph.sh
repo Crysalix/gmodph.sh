@@ -76,7 +76,7 @@ case $1 in
     stop)
         stop_servers;;
     *)
-        echo -e "Usage: $0 {start|stop}"
+        echo -e "Usage: $0 {start|stop|input}"
         exit 1;;
 esac
 
