@@ -48,6 +48,13 @@ function stop_servers(){
     done
 }
 
+function restart_servers(){
+    stop_servers
+    sleep 1
+    start_servers
+    
+}
+
 function input_servers(){
     for ((r=1 ; r<2 ; r++))
     do
@@ -75,10 +82,12 @@ case $1 in
         start_servers;;
     stop)
         stop_servers;;
+    restart)
+        restart_servers
     input)
         input_servers;;
     *)
-        echo -e "Usage: $0 {start|stop|input}"
+        echo -e "Usage: $0 {start|stop|restart|input}"
         exit 1;;
 esac
 
