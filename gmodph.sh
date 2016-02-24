@@ -77,6 +77,16 @@ function input_servers(){
     done
 }
 
+function update_servers(){
+  if [ $2 = '-v' ]; then
+    Steam/steamcmd.sh +@sSteamCmdForcePlatformType linux +login anonymous +app_update 4020 validate +exit
+    Steam/steamcmd.sh +@sSteamCmdForcePlatformType linux +login anonymous +app_update 232330 validate +exit
+  else
+    Steam/steamcmd.sh +@sSteamCmdForcePlatformType linux +login anonymous +app_update 4020 validate +quit >> $
+    Steam/steamcmd.sh +@sSteamCmdForcePlatformType linux +login anonymous +app_update 232330 validate +quit >$
+  fi
+}
+
 case $1 in
     start)
         start_servers;;
@@ -87,7 +97,7 @@ case $1 in
     input)
         input_servers;;
     *)
-        echo -e "Usage: $0 {start|stop|restart|input}"
+        echo -e "Usage: $0 {start|stop|restart|input|update}"
         exit 1;;
 esac
 
