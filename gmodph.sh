@@ -52,7 +52,6 @@ function restart_servers(){
     stop_servers
     sleep 1
     start_servers
-    
 }
 
 function input_servers(){
@@ -93,7 +92,7 @@ case $1 in
     stop)
         stop_servers;;
     restart)
-        restart_servers
+        restart_servers;;
     input)
         input_servers;;
     *)
